@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" x-data="orderForm()" xmlns:x-data="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PrintEase - Upload & Order</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-pink-100 border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-900">PrintEase</h1>
+      <nav class="space-x-6 text-sm">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="shop.html" class="hover:underline">Shop</a>
+        <a href="upload.html" class="font-semibold underline">Upload</a>
+        <a href="track.html" class="hover:underline">Track</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Upload Form -->
+  <section class="max-w-4xl mx-auto px-4 py-12" x-init="init()">
+    <h2 class="text-3xl font-bold mb-6 text-center">Upload & Configure Your Print Order</h2>
+
+    <form class="bg-white p-6 rounded shadow space-y-6">
+      <!-- Product Selection -->
+      <div>
+        <label class="block mb-2 font-semibold">Select Product</label>
+        <select x-model="product" class="w-full p-2 border rounded">
+          <option disabled selected value="">Choose...</option>
+          <option value="cards">Business Cards</option>
+          <option value="flyers">Flyers</option>
+          <option value="posters">Posters</option>
+        </select>
+      </div>
+
+      <!-- Product Preview -->
+      <template x-if="product">
+        <div class="mt-4">
+          <img :src="'assets/img/' + product + '.jpg'" alt="Product Preview" class="w-full h-64 object-cover rounded shadow" />
+        </div>
+      </template>
+
+      <!-- File Upload -->
+      <div>
+        <label class="block mb-2 font-semibold">Upload File</label>
+        <input type="file" class="w-full p-2 border rounded bg-white" />
+      </div>
+
+      <!-- Options -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block mb-2">Paper Size</label>
+          <select x-model="size" class="w-full p-2 border rounded">
+            <option value="A4">A4</option>
+            <option value="Letter">Letter</option>
+            <option value="Custom">Custom</option>
+          </select>
+        </div>
+        <div>
+          <label class="block mb-2">Quantity</label>
+          <input type="number" x-model="quantity" min="1" class="w-full p-2 border rounded" />
+        </div>
+      </div>
+
+      <!-- Pricing -->
+      <div>
+        <p class="text-lg font-semibold mt-4">Estimated Price: <span class="text-blue-600">$<span x-text="price()"></span></span></p>
+      </div>
+
+      <!-- Submit -->
+      <div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Submit Order</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-100 text-sm text-center py-4 mt-10">
+    <p>© 2025 PrintEase | Contact | Terms | Privacy</p>
+  </footer>
+
+  <!-- Alpine.js Logic -->
+  <script>
+    function orderForm() {
+      return {
+        product: '',
+        size: 'A4',
+        quantity: 1,
+        init() {
+          this.product = '';
+        },
+        price() {
+          let base = 10;
+          if (this.product === 'cards') base = 25;
+          if (this.product === 'flyers') base = 30;
+          if (this.product === 'posters') base = 15;
+          return (base * this.quantity).toFixed(2);
+        }
+      };
+    }
+  </script>
+</body>
+</html>
