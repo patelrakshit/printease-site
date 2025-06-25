@@ -1,0 +1,27 @@
+[
+     {
+          "title": "Business Cards",
+          "description": "Premium quality, full-color double-sided business cards.",
+          "price": "$25 / 100 cards",
+          "image": "assets/img/cards.jpg"
+     },
+     {
+          "title": "Flyers",
+          "description": "Glossy full-page flyers, ideal for marketing and events.",
+          "price": "$30 / 100 flyers",
+          "image": "assets/img/flyer.jpg"
+     },
+     {
+          "title": "Banner",
+          "description": "Standing Banner, ideal for marketing and events.",
+          "price": "$195-Standard / $220-Premium",
+          "image": "assets/img/banner.jpg"
+     },
+     {
+          "title": "Posters",
+          "description": "Large format, vibrant full-color posters.",
+          "price": "$15 / poster",
+          "image": "assets/img/poster.jpg"
+     }
+]
+   
