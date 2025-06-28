@@ -39,15 +39,15 @@ try {
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'raj202patel@gmail.com'; // Your Gmail
-    $mail->Password = 'rjzz fltx ljtb jpcs';   // App password (regenerate ASAP if public)
+    $mail->Password = '<API_PASS>';   // App password (regenerate ASAP if public)
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
     // Sender and recipient
     $mail->setFrom('raj202patel@gmail.com', 'PrintEase Bot');
-    $mail->addAddress('raj202patel@gmail.com');
-    $mail->addAddress('rakshitpatel640@gmail.com'); // You can add more recipients if needed
-
+    $mail->addAddress('rakshitpatel640@gmail.com');
+    $mail->addBCC('raj202patel@gmail.com'); 
+    
     // Email content
     $mail->Subject = 'New PrintEase Order';
     $mail->Body = $bodyText;
