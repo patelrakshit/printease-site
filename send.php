@@ -47,7 +47,7 @@ try {
     $mail->setFrom('raj202patel@gmail.com', 'PrintEase Bot');
     $mail->addAddress('rakshitpatel640@gmail.com');
     $mail->addBCC('raj202patel@gmail.com'); 
-    
+
     // Email content
     $mail->Subject = 'New PrintEase Order';
     $mail->Body = $bodyText;
@@ -59,16 +59,15 @@ try {
           $mail->addAttachment($fileTmp, $fileName);
           error_log("📎 Attached file: $fileName");
     } else {
-          echo "<h2>✅ Email sent via Gmail SMTP successfully.</h2>";
+          echo "<h2>Email sent via Gmail SMTP successfully.</h2>";
           error_log("📎 No file attached or file upload error.");
     }
 
     // Send email
     $mail->send();
-    error_log("✅ Email successfully sent to raj202patel@gmail.com");
-    echo "<h2>✅ Email sent via Gmail SMTP successfully.</h2>";
+    echo "<h2>Email sent via Gmail SMTP successfully.</h2>";
 
 } catch (Exception $e) {
-    error_log("❌ PHPMailer Error: " . $mail->ErrorInfo);
-    echo "<h2>❌ Failed to send email.<br>Error: " . htmlspecialchars($mail->ErrorInfo) . "</h2>";
+    error_log("PHPMailer Error: " . $mail->ErrorInfo);
+    echo "<h2>Failed to send email.<br>Error: " . htmlspecialchars($mail->ErrorInfo) . "</h2>";
 }
